@@ -8,3 +8,4 @@ function additionFactorial(number) {
   }
   return sum;
 }
+
