@@ -3,7 +3,7 @@
 
 function additionFactorial(number) {
   let sum = number;
-  while (number >= 0) {
+  while (number > 0) {
     sum += number - 1;
   }
   return sum;
