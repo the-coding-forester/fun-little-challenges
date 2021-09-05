@@ -42,3 +42,5 @@ const twoSum = function (nums, target) {
     }
   }
 }
+
+//coded for over an hour trying to make this work as a Map, nothing worth
