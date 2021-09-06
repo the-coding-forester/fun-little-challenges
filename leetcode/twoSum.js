@@ -33,6 +33,9 @@ Only one valid answer exists.
 Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 */
 
+/*
+BRUTE FORCE SOLUTION:
+
 const twoSum = function (nums, target) {
   for (let index = 0; index < nums.length; index++) {
     let difference = target - nums[index];
@@ -42,5 +45,34 @@ const twoSum = function (nums, target) {
     }
   }
 }
+*/
 
-//coded for over an hour trying to make this work as a Map, nothing worth
+//Solution not yet working for edge cases
+const twoSum = function (nums, target) {
+  const indexMap = new Map();
+  let num1;
+  let num2;
+  let difference;
+  if (target % 2 === 0) {
+    num1 = nums.indexOf(target / 2);
+    if (num1 !== -1) {
+      num2 = nums.indexOf(target / 2, num1 + 1);
+      if (num2 !== -1) {
+        return [num1, num2];
+      }
+    }
+  }
+  else {
+    for (let index = 0; index < nums.length; index++) {
+      indexMap.set(nums[index], index);
+    }
+    for (let key of indexMap.keys()) {
+      num1 = indexMap.get(key);
+      difference = target - key;
+      if (indexMap.has(difference)) {
+        num2 = indexMap.get(difference);
+        return [num1, num2];
+      }
+    }
+  }
+};
