@@ -47,32 +47,13 @@ const twoSum = function (nums, target) {
 }
 */
 
-//Solution not yet working for edge cases
+//Solution using a map object
 const twoSum = function (nums, target) {
   const indexMap = new Map();
-  let num1;
-  let num2;
-  let difference;
-  if (target % 2 === 0) {
-    num1 = nums.indexOf(target / 2);
-    if (num1 !== -1) {
-      num2 = nums.indexOf(target / 2, num1 + 1);
-      if (num2 !== -1) {
-        return [num1, num2];
-      }
+  for (let i = 0; i < nums.length; i++) {
+    if (indexMap.has(target - nums[i])) {
+      return [indexMap.get(target - nums[i]), i];
     }
-  }
-  else {
-    for (let index = 0; index < nums.length; index++) {
-      indexMap.set(nums[index], index);
-    }
-    for (let key of indexMap.keys()) {
-      num1 = indexMap.get(key);
-      difference = target - key;
-      if (indexMap.has(difference)) {
-        num2 = indexMap.get(difference);
-        return [num1, num2];
-      }
-    }
+    indexMap.set(nums[i], i);
   }
 };
