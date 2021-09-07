@@ -48,12 +48,18 @@ const twoSum = function (nums, target) {
 */
 
 //Solution using a map object
-const twoSum = function (nums, target) {
+const twoSum = (nums, target) => {
   const indexMap = new Map();
+
+  //mapping the array
+  for (let index = 0; index < nums.length; index++) {
+    indexMap.set(nums[index], index);
+  }
+
   for (let i = 0; i < nums.length; i++) {
-    if (indexMap.has(target - nums[i])) {
-      return [indexMap.get(target - nums[i]), i];
+    difference = target - nums[i];
+    if (indexMap.has(difference) && indexMap.get(difference) !== i) {
+      return [i, indexMap.get(difference)];
     }
-    indexMap.set(nums[i], i);
   }
 };
