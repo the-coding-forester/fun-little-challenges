@@ -15,7 +15,31 @@ const listNames = () => {
   dataFile.recipes.forEach(recipe => {
     values.push(recipe.name);
   });
-  return { recipeNames: values };
+  return { "recipeNames": values };
+}
+
+/* expected return for listIngredients (if recipe exists):
+{
+  "details":
+    {
+      "ingredients": [
+        "500mL water",
+        "100g spaghetti",
+        "25mL olive oil",
+        "4 cloves garlic",
+        "Salt"
+      ],
+      "numSteps":5
+    }
+}
+*/
+const listIngredients = (recipeName) => {
+  const ingredients = [];
+  let steps = dataFile.recipes[recipeName].instructions.length;
+  dataFile.recipes[recipeName].ingredients.forEach(ingredient => {
+    ingredients.push(ingredient);
+  })
+  return { "details": { "ingredients": ingredients, "numSteps": steps } }
 }
 
 module.exports = {
