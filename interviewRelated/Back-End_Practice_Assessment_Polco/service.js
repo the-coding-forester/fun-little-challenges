@@ -44,4 +44,5 @@ const listIngredients = (recipeName) => {
 
 module.exports = {
   listNames,
+  listIngredients,
 }

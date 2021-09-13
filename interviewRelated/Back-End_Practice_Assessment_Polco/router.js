@@ -6,3 +6,8 @@ router
   .route("/recipes")
   .get(controller.listNames)
   .all(methodNotAllowed);
+
+router
+  .route("/recipes/details/:recipeName")
+  .get(controller.listIngredients)
+  .all(methodNotAllowed);
