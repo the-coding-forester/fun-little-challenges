@@ -30,5 +30,5 @@ const isUPC = (string) => {
   return false;
 }
 
-console.log(isUPC("154698752364"));
-console.log(isUPC("555555555555"));
+console.log(isUPC("154698752364")); //return false
+console.log(isUPC("555555555555")); //return true
