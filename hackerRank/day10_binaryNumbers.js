@@ -1,6 +1,6 @@
 function main() {
-  var n = parseInt(readLine());
-  var arr = [];
+  let n = parseInt(readLine());
+  let arr = [];
 
   while (n != 0) {
     if (n % 2 == 0)
@@ -10,11 +10,11 @@ function main() {
     n = Math.floor(n / 2);
   }
 
-  var max = 0;
-  var cur = 0;
+  let max = 0;
+  let cur = 0;
 
 
-  for (var i = 0, len = arr.length; i < len; i++) {
+  for (let i = 0, len = arr.length; i < len; i++) {
     if (arr[i] == 1)
       cur++;
     else if (arr[i] == 0) {
