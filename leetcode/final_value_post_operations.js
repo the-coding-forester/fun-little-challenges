@@ -44,3 +44,18 @@ Constraints:
 1 <= operations.length <= 100
 operations[i] will be either "++X", "X++", "--X", or "X--".
 */
+
+const finalValueAfterOperations = function (operations) {
+  let X = 0;
+  operations.forEach((operation) => {
+    if (operation === "--X" || operation === "X--") {
+      X = X - 1;
+    }
+    else if (operation === "++X" || operation === "X++") {
+      X = X + 1;
+    } else {
+      return
+    }
+  })
+  return X;
+};
