@@ -40,7 +40,7 @@ n == candies.length
  * @param {number} extraCandies
  * @return {boolean[]}
  */
-const kidsWithCandies = function (candies, extraCandies) {
+const kidsWithMostCandies = function (candies, extraCandies) {
   let booleanArray = candies.map((candy) => {
     let candyPlus = candy + extraCandies
     let greatestNumber = Math.max(candyPlus, ...candies)
