@@ -46,3 +46,16 @@ Constraints:
 
 1 <= num <= 3999
 */
+
+const intToRoman = function (num) {
+  let leftover = num;
+  let numeral = "";
+  if (num % 1000) {
+    let occurance = num % 1000;
+    leftover = num - (1000 * occurance)
+    if (occurance === 4) {
+      numeral += 'IV'
+    }
+    // use recursion to add Is
+  }
+};
