@@ -49,9 +49,32 @@ s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 */
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
 const romanToInt = function (s) {
   let num = 0;
-  let numeralArray = Array.from(s)
+  let newNumeral = s
+  newNumeral = newNumeral.replace('IV', 'IIII');
+  newNumeral = newNumeral.replace('IX', 'VIIII');
+  newNumeral = newNumeral.replace('IL', 'XXXXVIIII');
+  newNumeral = newNumeral.replace('XL', 'XXXX');
+  newNumeral = newNumeral.replace('VL', 'XXXXV');
+  newNumeral = newNumeral.replace('IC', 'LXXXXVIIII');
+  newNumeral = newNumeral.replace('XC', 'LXXXX');
+  newNumeral = newNumeral.replace('VC', 'LXXXXV');
+  newNumeral = newNumeral.replace('ID', 'CCCCLXXXXVIIII');
+  newNumeral = newNumeral.replace('CD', 'CCCC');
+  newNumeral = newNumeral.replace('LD', 'CCCCL');
+  newNumeral = newNumeral.replace('XD', 'CCCCLXXXX');
+  newNumeral = newNumeral.replace('VD', 'CCCCLXXXXV');
+  newNumeral = newNumeral.replace('IM', 'DCCCCLXXXXVIIII');
+  newNumeral = newNumeral.replace('CM', 'DCCCC');
+  newNumeral = newNumeral.replace('LM', 'DCCCCL');
+  newNumeral = newNumeral.replace('XM', 'DCCCCLXXXX');
+  newNumeral = newNumeral.replace('VM', 'DCCCCLXXXXV');
+  let numeralArray = Array.from(newNumeral)
   numeralArray.forEach((numeral) => {
     switch (numeral) {
       case 'I':
@@ -76,7 +99,7 @@ const romanToInt = function (s) {
         num += 1000;
         break;
       default:
-        return "Sorry, not an accepted roman rumeral"
+        return "Sorry, not an accepted roman numeral"
     }
   })
   return num;
