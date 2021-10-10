@@ -48,3 +48,36 @@ Constraints:
 s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 */
+
+const romanToInt = function (s) {
+  let num = 0;
+  let numeralArray = Array.from(s)
+  numeralArray.forEach((numeral) => {
+    switch (numeral) {
+      case 'I':
+        num += 1;
+        break;
+      case 'V':
+        num += 5;
+        break;
+      case 'X':
+        num += 10;
+        break;
+      case 'L':
+        num += 50;
+        break;
+      case 'C':
+        num += 100;
+        break;
+      case 'D':
+        num += 500;
+        break;
+      case 'M':
+        num += 1000;
+        break;
+      default:
+        return "Sorry, not an accepted roman rumeral"
+    }
+  })
+  return num;
+};
