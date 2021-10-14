@@ -19,21 +19,3 @@ Constraints:
 
 1 <= n <= 10^4
 */
-
-const numSquares = function (n) {
-  let perfectCount = 0;
-  let currentNumber = n;
-  let pointerNumber = n;
-  while (currentNumber > 0) {
-    let currentSquaredRoot = Math.sqrt(pointerNumber)
-    if (currentSquaredRoot !== Math.floor(currentSquaredRoot)) {
-      pointerNumber = pointerNumber - 1;
-    } else {
-      perfectCount = perfectCount + 1;
-      currentNumber = currentNumber - pointerNumber;
-      pointerNumber = pointerNumber - 1;
-    }
-  }
-
-  return perfectCount;
-};
