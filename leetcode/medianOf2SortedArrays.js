@@ -40,8 +40,31 @@ nums2.length == n
 */
 
 const findMedianSortedArrays = function (nums1, nums2) {
-  const sortedNums = [...nums1, ...nums2];
-  sortedNums.sort()
+  // Cannot use the sort functionality for arrays, it cannot handle negatives
+  const sortedNums = [];
+  let index1 = 0;
+  let index2 = 0;
+
+  while (index1 < nums1.length && index2 < nums2.length) {
+    if (nums1[index1] < nums2[index2]) {
+      sortedNums.push(nums1[index1]);
+      index1++;
+    } else {
+      sortedNums.push(nums2[index2]);
+      index2++;
+    }
+  };
+
+  while (index1 < nums1.length) {
+    sortedNums.push(nums1[index1]);
+    index1++;
+  };
+
+  while (index2 < nums2.length) {
+    sortedNums.push(nums2[index2]);
+    index2++;
+  }
+
 
   if (sortedNums.length === 1) {
     return sortedNums[0].toFixed(5)
