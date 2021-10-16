@@ -40,6 +40,7 @@ const findMedianSortedArrays = function (nums1, nums2) {
   let index1 = 0;
   let index2 = 0;
 
+  //sorting the 2 sorted arrays into a single sorted array
   while (index1 < nums1.length && index2 < nums2.length) {
     if (nums1[index1] < nums2[index2]) {
       sortedNums.push(nums1[index1]);
@@ -60,8 +61,9 @@ const findMedianSortedArrays = function (nums1, nums2) {
     index2++;
   }
 
-
+  // returning the median of the single sorted array
   if (sortedNums.length === 1) {
+    //tests wanted 5 decimal places
     return sortedNums[0].toFixed(5)
   };
 
