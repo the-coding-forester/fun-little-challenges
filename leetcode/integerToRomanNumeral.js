@@ -47,15 +47,129 @@ Constraints:
 1 <= num <= 3999
 */
 
+/**
+ * @param {number} num
+ * @return {string}
+ */
 const intToRoman = function (num) {
-  let leftover = num;
-  let numeral = "";
-  if (num % 1000) {
-    let occurance = num % 1000;
-    leftover = num - (1000 * occurance)
-    if (occurance === 4) {
-      numeral += 'IV'
+  //constraints for function has a maximum of 3999
+  let romanNumeral = "";
+  let digitArr = num.toString().split('');
+
+  let length = digitArr.length
+  for (let i = length - 1; i >= 0; i = i - 1) {
+    //replacing the ones digit
+    if (i === length - 1) {
+      switch (digitArr[i]) {
+        case '1':
+          romanNumeral += 'I'
+          break;
+        case '2':
+          romanNumeral += 'II'
+          break;
+        case '3':
+          romanNumeral += 'III'
+          break;
+        case '4':
+          romanNumeral += 'IV'
+          break;
+        case '5':
+          romanNumeral += 'V'
+          break;
+        case '6':
+          romanNumeral += 'VI'
+          break;
+        case '7':
+          romanNumeral += 'VII'
+          break;
+        case '8':
+          romanNumeral += 'VIII'
+          break;
+        case '9':
+          romanNumeral += 'IX'
+          break;
+      }
     }
-    // use recursion to add Is
+
+    //replacing the tenss digit
+    if (i === length - 2) {
+      switch (digitArr[i]) {
+        case '1':
+          romanNumeral = 'X' + romanNumeral
+          break;
+        case '2':
+          romanNumeral = 'XX' + romanNumeral
+          break;
+        case '3':
+          romanNumeral = 'XXX' + romanNumeral
+          break;
+        case '4':
+          romanNumeral = 'XL' + romanNumeral
+          break;
+        case '5':
+          romanNumeral = 'L' + romanNumeral
+          break;
+        case '6':
+          romanNumeral = 'LX' + romanNumeral
+          break;
+        case '7':
+          romanNumeral = 'LXX' + romanNumeral
+          break;
+        case '8':
+          romanNumeral = 'LXXX' + romanNumeral
+          break;
+        case '9':
+          romanNumeral = 'XC' + romanNumeral
+          break;
+      }
+    }
+
+    //replacing the hundredss digit
+    if (i === length - 3) {
+      switch (digitArr[i]) {
+        case '1':
+          romanNumeral = 'C' + romanNumeral
+          break;
+        case '2':
+          romanNumeral = 'CC' + romanNumeral
+          break;
+        case '3':
+          romanNumeral = 'CCC' + romanNumeral
+          break;
+        case '4':
+          romanNumeral = 'CD' + romanNumeral
+          break;
+        case '5':
+          romanNumeral = 'D' + romanNumeral
+          break;
+        case '6':
+          romanNumeral = 'DC' + romanNumeral
+          break;
+        case '7':
+          romanNumeral = 'DCC' + romanNumeral
+          break;
+        case '8':
+          romanNumeral = 'DCCC' + romanNumeral
+          break;
+        case '9':
+          romanNumeral = 'CM' + romanNumeral
+          break;
+      }
+    }
+    //replacing the thousands digit
+    if (i === length - 4) {
+      switch (digitArr[i]) {
+        case '1':
+          romanNumeral = 'M' + romanNumeral
+          break;
+        case '2':
+          romanNumeral = 'MM' + romanNumeral
+          break;
+        case '3':
+          romanNumeral = 'MMM' + romanNumeral
+          break;
+      }
+    }
   }
+  return romanNumeral;
 };
