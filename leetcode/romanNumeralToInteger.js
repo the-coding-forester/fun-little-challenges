@@ -53,54 +53,33 @@ It is guaranteed that s is a valid roman numeral in the range [1, 3999].
  * @param {string} s
  * @return {number}
  */
-const romanToInt = function (s) {
-  let num = 0;
-  let newNumeral = s
-  newNumeral = newNumeral.replace('IV', 'IIII');
-  newNumeral = newNumeral.replace('IX', 'VIIII');
-  newNumeral = newNumeral.replace('IL', 'XXXXVIIII');
-  newNumeral = newNumeral.replace('XL', 'XXXX');
-  newNumeral = newNumeral.replace('VL', 'XXXXV');
-  newNumeral = newNumeral.replace('IC', 'LXXXXVIIII');
-  newNumeral = newNumeral.replace('XC', 'LXXXX');
-  newNumeral = newNumeral.replace('VC', 'LXXXXV');
-  newNumeral = newNumeral.replace('ID', 'CCCCLXXXXVIIII');
-  newNumeral = newNumeral.replace('CD', 'CCCC');
-  newNumeral = newNumeral.replace('LD', 'CCCCL');
-  newNumeral = newNumeral.replace('XD', 'CCCCLXXXX');
-  newNumeral = newNumeral.replace('VD', 'CCCCLXXXXV');
-  newNumeral = newNumeral.replace('IM', 'DCCCCLXXXXVIIII');
-  newNumeral = newNumeral.replace('CM', 'DCCCC');
-  newNumeral = newNumeral.replace('LM', 'DCCCCL');
-  newNumeral = newNumeral.replace('XM', 'DCCCCLXXXX');
-  newNumeral = newNumeral.replace('VM', 'DCCCCLXXXXV');
-  let numeralArray = Array.from(newNumeral)
-  numeralArray.forEach((numeral) => {
-    switch (numeral) {
-      case 'I':
-        num += 1;
-        break;
-      case 'V':
-        num += 5;
-        break;
-      case 'X':
-        num += 10;
-        break;
-      case 'L':
-        num += 50;
-        break;
-      case 'C':
-        num += 100;
-        break;
-      case 'D':
-        num += 500;
-        break;
-      case 'M':
-        num += 1000;
-        break;
-      default:
-        return "Sorry, not an accepted roman numeral"
+const romanToInt = (s) => {
+  const numeralArray = s.split("");
+  let conversionTotal = 0;
+  let currentValue = 0;
+  let previousValue = 0;
+
+  const conversionMap = new Map();
+  conversionMap.set("I", 1)
+  conversionMap.set("V", 5)
+  conversionMap.set("X", 10)
+  conversionMap.set("L", 50)
+  conversionMap.set("C", 100)
+  conversionMap.set("D", 500)
+  conversionMap.set("M", 1000)
+
+  for (let i = numeralArray.length - 1; i >= 0; i = i - 1) {
+    currentValue = conversionMap.get(numeralArray[i])
+    if (i === numeralArray.length - 1) {
+      conversionTotal += currentValue
+    } else if (currentValue < previousValue) {
+      conversionTotal = conversionTotal - currentValue;
+    } else {
+      conversionTotal += currentValue;
     }
-  })
-  return num;
+    previousValue = currentValue;
+  }
+
+  return conversionTotal;
+
 };
