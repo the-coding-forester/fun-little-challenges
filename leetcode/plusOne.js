@@ -40,3 +40,21 @@ Constraints:
 digits does not contain any leading 0's.
 */
 
+const plusOne = (digits) => {
+  let lastIndex = digits.length - 1;
+  if (digits[lastIndex] !== 9) {
+    digits[lastIndex] += 1;
+    return digits;
+  }
+
+  if (digits.length === 1) {
+    return [1, 0]
+  }
+
+  //     for (let i = lastIndex; i <= 0; i = i -1){
+
+  //     }
+
+  digits[lastIndex] += 1;
+  return digits;
+};
