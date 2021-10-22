@@ -42,19 +42,28 @@ digits does not contain any leading 0's.
 
 const plusOne = (digits) => {
   let lastIndex = digits.length - 1;
+
+  //if the number is not 9
   if (digits[lastIndex] !== 9) {
     digits[lastIndex] += 1;
     return digits;
   }
 
+  //prevent using a loop for a single digit
   if (digits.length === 1) {
     return [1, 0]
   }
 
-  //     for (let i = lastIndex; i <= 0; i = i -1){
-
-  //     }
-
-  digits[lastIndex] += 1;
+  let pointer = lastIndex
+  while (digits[pointer] === 9) {
+    digits[pointer] = 0;
+    if (digits[pointer - 1] !== 9 && pointer >= 0) {
+      digits[pointer - 1] += 1;
+    } else if (pointer === 0) {
+      digits.unshift(1);
+    } else {
+      pointer = pointer - 1;
+    }
+  }
   return digits;
 };
