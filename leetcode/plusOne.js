@@ -57,11 +57,12 @@ const plusOne = (digits) => {
   let pointer = lastIndex
   while (digits[pointer] === 9) {
     digits[pointer] = 0;
-    if (digits[pointer - 1] !== 9 && pointer >= 0) {
+    if (digits[pointer - 1] !== 9 && pointer > 0) {
       digits[pointer - 1] += 1;
-    } else if (pointer === 0) {
-      digits.unshift(1);
     } else {
+      if (pointer === 0) {
+        digits.unshift(1)
+      }
       pointer = pointer - 1;
     }
   }
